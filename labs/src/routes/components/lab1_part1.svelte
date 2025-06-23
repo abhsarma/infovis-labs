@@ -29,6 +29,8 @@
 
 		</g>
 	</svg>
+</div>
+<div>
 	<button on:click={() => modify()}>Modify</button>
 	<button on:click={() => reset()}>Reset</button>
 </div>

@@ -1,6 +1,6 @@
 <script>
 	/* Javascript goes here */
-	import Lab1 from "./solutions/lab1_part4.svelte"
+	import Lab1 from "./components/lab1_part1.svelte"
 </script>
 
 <main>
