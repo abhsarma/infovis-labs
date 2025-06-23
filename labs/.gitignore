@@ -1,5 +1,8 @@
 node_modules
 
+# solution directory
+src/solutions/*
+
 # Output
 .output
 .vercel
