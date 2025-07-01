@@ -1,7 +1,14 @@
 node_modules
 
 # solution directory
-src/routes/solutions/*
+src/routes/lab1-solutions/*
+src/routes/lab2-solutions/*
+src/routes/lab3-solutions/*
+src/routes/lab4-solutions/*
+src/routes/lab5-solutions/*
+src/routes/lab6-solutions/*
+src/routes/lab7-solutions/*
+src/routes/lab8-solutions/*
 
 # Output
 .output
