@@ -22,6 +22,10 @@
     let path = geoPath()
       .projection(projection);
 
+    // circleProjection is also a function that takes a given GeoJSON geometry or feature object 
+    // and generates SVG path data string
+    let circleProjection = path.pointRadius(d => 10);
+
     let variableOptions = ["none", "population", "unemployment"];
 
     let states = feature(USstates, USstates.objects.usStates).features;
@@ -58,7 +62,7 @@
                 <!-- stateCentroids is an array of geoJSON  -->
                 <path 
                     class="symbol" 
-                    d="{path.pointRadius(d => 10)(x)}" 
+                    d="{circleProjection(x)}" 
                     fill="green"/>
             {/each}
         </g>
