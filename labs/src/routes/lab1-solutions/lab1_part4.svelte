@@ -4,6 +4,7 @@
 	import {interpolate} from 'd3-interpolate';
 	import { Tween } from 'svelte/motion';
 	import { cubicOut } from 'svelte/easing';
+	import Circle from './Circle.svelte'
 
 
 	let margin = { top: 20, right: 20, bottom: 20, left: 20 };
@@ -15,6 +16,8 @@
 		[410, 12], [475, 44], [25, 67], [85, 21], [220, 88]
 	];
 
+	let xMax = max(dataset.map(d => d[0]))
+	let yMax = max(dataset.map(d => d[1]))
 	let xyMax = max(dataset.flatMap(d => d))
 
 	let xScale = scaleLinear()
@@ -25,8 +28,6 @@
 		.domain([0, xyMax])
 		.range([height - margin.bottom, margin.top]);
 
-	let fill = $state("black");
-	let size = $state(3);
 
 	// Animation parameters
 	const tweenParams = {
@@ -35,18 +36,20 @@
 		interpolate
 	};
 
-	let tFill = new Tween(fill, {...tweenParams});
-
-	let tSize = new Tween(size, {...tweenParams});
+	let fill = $state("black");
+	let size = $state(3);
+	let currentData = $state(dataset)
 
 	function modify() {
-		tFill.target = "magenta";
-		tSize.target = 10;
+		fill = "magenta";
+		size = 10;
+		currentData = dataset.map(d => [xMax*Math.random(), yMax*Math.random()]);
 	}
 
 	function reset() {
-		tFill.target = "black";
-		tSize.target = 3;
+		fill = "black";
+		size = 3;
+		currentData = dataset;
 	}
 </script>
 
@@ -58,8 +61,8 @@
 		>
 		<!-- you can remove the style line above -->
 		<g>
-			{#each dataset as d}
-				<circle cx="{xScale(d[0])}" cy="{yScale(d[1])}" r="{tSize.current}" fill="{tFill.current}"/>
+			{#each currentData as d}
+				<Circle x={d[0]} y={d[1]} size={size} fill={fill} {xScale} {yScale}/>
 			{/each}
 		</g>
 
