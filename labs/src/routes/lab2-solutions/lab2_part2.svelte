@@ -18,7 +18,9 @@
     // NOTE: path and circleProjection are functions
     let path = geoPath()
       .projection(projection);
-    let circleProjection = path.pointRadius(d => 10);
+    
+    // this is how I am mapping variables to circle size (but you may have used a different approach)
+    let circleProjection = path.pointRadius(d => sizeScale(d.properties[sizeVar])); 
 
     let variableOptions = ["none", "population", "unemployment"];
     let sizeVar = $state("none");
@@ -78,6 +80,7 @@
                 <!-- path.pointRadius(d => 10) returns a function -->
                 <!-- it takes as an argument a geoJSON variable -->
                 <!-- stateCentroids is an array of geoJSON  -->
+                {console.log(x)}
                 <path
                     class="symbol" 
                     d="{circleProjection(x)}" 
