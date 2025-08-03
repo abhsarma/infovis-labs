@@ -1,8 +1,8 @@
 <script>
-    import {scaleLinear} from "d3-scale";
+    import {scaleLinear, scaleSqrt} from "d3-scale";
     
     // EXAMPLE
-    let linearScale = d3.scaleLinear()
+    let linearScale = scaleLinear()
         .domain([0, 100])
         .range([0, 10])
 
@@ -22,7 +22,7 @@
     // https://observablehq.com/@d3/d3-scalelinear
     // Define a linear scale that maps 100-300 to 10-1000
 
-    let weightScale = d3.scaleLinear()
+    let weightScale = scaleLinear()
         .domain([100, 300])
         .range([10, 1000])
 
@@ -34,7 +34,7 @@
     // Create a linear color scale
     // that maps 0-10 to white-lightblue
 
-    let colorScale = d3.scaleLinear()
+    let colorScale = scaleLinear()
         .domain([0, 10])
         .range(["white", "lightblue"])
 
@@ -45,7 +45,7 @@
     // Create a diverging color scale
     // that maps -32, 0, 32 to blue, white, red.
 
-    let colorDiverge = d3.scaleLinear()
+    let colorDiverge = scaleLinear()
         .domain([-32, 0, 32])
         .range(["blue", "white", "red"])
 
@@ -57,7 +57,7 @@
     // Create a square root scale
     // that maps 0-1000000 to 0-15
 
-    let sqrtScale = d3.scaleSqrt()
+    let sqrtScale = scaleSqrt()
         .domain([0, 1000000])
         .range([0, 15])
 
