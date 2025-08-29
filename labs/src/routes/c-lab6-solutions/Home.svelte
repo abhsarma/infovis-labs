@@ -20,14 +20,14 @@
     // load the data
  	onMount(
 		async () => {
-			data = await json('https://raw.githubusercontent.com/abhsarma/infovis-labs/refs/heads/main/labs/data/flare.json')
+			data = await json('https://raw.githubusercontent.com/abhsarma/infovis-labs/refs/heads/main/labs/data/household.json')
 		}
 	)
 
     let root = $derived.by(() => {
         if (data) {
             return hierarchy(data)
-                    .sum(function(d) { return d.size; })
+                    .sum(function(d) { return d.value; })
                     .sort(function(a, b) { return b.value - a.value; });
         }
     });
